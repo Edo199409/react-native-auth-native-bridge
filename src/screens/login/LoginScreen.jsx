@@ -13,6 +13,7 @@ import { normalizePixel, RH, RW } from '../../utils/themes';
 
 export const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
+    
 
     const handleLogin = async () => {
         if (!email.trim()) {

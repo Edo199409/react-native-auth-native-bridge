@@ -8,7 +8,8 @@ import { useAuth } from '../context/AuthContext';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated } = useAuth();
+  
 
   return (
     <Stack.Navigator
