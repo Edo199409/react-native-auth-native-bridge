@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useAuth } from '../../context/AuthContext'
 import { PERMISSIONS, requestMultiple, RESULTS, openSettings } from 'react-native-permissions'
 import Geolocation from 'react-native-geolocation-service';
+import { colors } from '../../utils/colors'
 
 export const LocationScreen = ({ navigation }) => {
   const { setAuthenticated } = useAuth()
@@ -123,7 +124,7 @@ export const LocationScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F7',
+    backgroundColor: colors.dark_white,
     paddingHorizontal: RH(20)
   },
   header: {
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end'
   },
   logOutText: {
-    color: '#0066FF',
+    color: colors.blue,
     fontWeight: '600',
     marginTop: RW(20)
   },
@@ -143,12 +144,12 @@ const styles = StyleSheet.create({
   locationButtonStyle: {
     paddingHorizontal: RH(20),
     paddingVertical: RW(8),
-    backgroundColor: '#0066FF',
+    backgroundColor: colors.blue,
     borderRadius: normalizePixel(12),
     marginBottom: RW(20)
   },
   locationButtonTextStyle: {
-    color: 'white',
+    color: colors.white,
     fontSize: normalizePixel(17)
   },
   errorContainer: {
@@ -156,18 +157,18 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   errorText: {
-    color: 'red',
+    color: colors.red,
     textAlign: 'center',
     marginBottom: RW(10)
   },
   settingsButton: {
     paddingHorizontal: RH(15),
     paddingVertical: RW(8),
-    backgroundColor: '#FF6600',
+    backgroundColor: colors.orange,
     borderRadius: normalizePixel(8)
   },
   settingsButtonText: {
-    color: 'white',
+    color: colors.white,
     fontSize: normalizePixel(15)
   }
 })

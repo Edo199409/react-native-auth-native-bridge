@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { normalizePixel, RH, RW } from '../../utils/themes';
+import { colors } from '../../utils/colors';
 
 export const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
         padding: normalizePixel(24),
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
     },
     avatar: {
         width: RH(100),
@@ -72,20 +73,20 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontSize: normalizePixel(14),
-        color: '#666',
+        color: colors.gray,
         marginBottom: RW(24),
     },
     input: {
         width: '100%',
-        height: RW(48),
-        borderColor: '#ccc',
+        height: RW(45),
+        borderColor: colors.light_gray,
         borderWidth: 1,
         borderRadius: normalizePixel(10),
         paddingHorizontal: RH(16),
         marginBottom: RW(16),
     },
     button: {
-        backgroundColor: '#0066FF',
+        backgroundColor: colors.blue,
         paddingVertical: RW(14),
         width: '100%',
         borderRadius: normalizePixel(10),
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
         marginBottom: RW(16),
     },
     buttonText: {
-        color: '#fff',
+        color: colors.white,
         fontWeight: '600',
         fontSize: normalizePixel(16),
     },

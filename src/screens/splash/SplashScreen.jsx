@@ -1,11 +1,11 @@
-import { Image, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native'
 import React from 'react'
 
 export const SplashScreen = () => {
   return (
     <View style={styles.container}>
       <StatusBar hidden />
-      <Image
+      <ImageBackground
         source={require('../../assets/images/splash.jpg')}
         style={styles.image}
         resizeMode='cover'

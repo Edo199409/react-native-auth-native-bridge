@@ -1,27 +1,43 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { LocationScreen, LoginScreen, MessageScreen } from '../screens';
+import { LocationScreen, MessageScreen } from '../screens';
 import { StyleSheet } from 'react-native';
 import { NAV_HEADER_OPTION, TAB_BAR_HEIGHT } from '../utils/constants';
-import { RH } from '../utils/themes';
+import { normalizePixel, RH } from '../utils/themes';
+import { colors } from '../utils/colors';
 
 const Tab = createBottomTabNavigator();
 
 export const TabNavigator = () => {
     return (
         <Tab.Navigator
-            screenOptions={({ route }) => ({
+            screenOptions={() => ({
                 lazy: true,
-                tabBarShowLabel: false,
                 tabBarStyle: styles.tabBar,
                 tabBarHideOnKeyboard: true,
                 tabBarLabelStyle: {
-                    fontSize: 14,
+                    fontSize: normalizePixel(16),
                 },
             })}>
 
-            <Tab.Screen name="Message" component={MessageScreen} options={NAV_HEADER_OPTION} />
-            <Tab.Screen name="Location" component={LocationScreen} options={NAV_HEADER_OPTION} />
+            <Tab.Screen
+                name="Message"
+                component={MessageScreen}
+                options={{
+                    ...NAV_HEADER_OPTION,
+                    tabBarLabel: 'Message',
+                    tabBarIcon: () => null
+                }}
+            />
+            <Tab.Screen
+                name="Location"
+                component={LocationScreen}
+                options={{
+                    ...NAV_HEADER_OPTION,
+                    tabBarIcon: () => null
+                }}
+
+            />
         </Tab.Navigator>
     );
 };
@@ -32,6 +48,6 @@ const styles = StyleSheet.create({
         elevation: 3,
         height: TAB_BAR_HEIGHT,
         paddingVertical: RH(10),
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
     },
 })

@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Keyboard, Pressable } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Keyboard, Pressable, Alert } from 'react-native';
 import CustomModule from '../../native/CustomModule';
 import { normalizePixel, RH, RW } from '../../utils/themes';
+import { colors } from '../../utils/colors';
 
 export const MessageScreen = () => {
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState('');
 
   const handleSend = async () => {
+    if (!message.trim()) {
+      Alert.alert('Error', 'Enter message');
+      return;
+    }
     try {
+
       CustomModule.sendMessage(message, (resp) => {
         setResponse(resp);
         setMessage('')
         Keyboard.dismiss()
       });
     } catch (error) {
-      console.error(error);
+      Alert.alert('Error', 'Network error');
+
     }
   };
 
@@ -54,6 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: RH(20),
     paddingBottom: RW(20),
+    backgroundColor: colors.dark_white
   },
   body: {
     flex: 1,
@@ -62,27 +70,28 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     marginBottom: RW(10),
-    fontSize: normalizePixel(15),
-    backgroundColor: 'white',
+    fontSize: normalizePixel(14),
+    backgroundColor: colors.white,
     borderRadius: normalizePixel(10),
     paddingHorizontal: RH(15),
-    height: RW(35)
+    height: RW(48),
+    color: colors.black
   },
   responseText: {
     marginBottom: RW(50),
-    color: 'green',
+    color: colors.green,
     fontSize: normalizePixel(20),
   },
   buttonStyle: {
     width: '100%',
-    backgroundColor: '#7393B3',
-    paddingVertical: RW(10),
+    backgroundColor: colors.blue,
+    height: RW(48),
     borderRadius: normalizePixel(10),
     alignItems: 'center',
     justifyContent: 'center'
   },
   buttonText: {
-    color: 'white',
-    fontSize: 15
+    color: colors.white,
+    fontSize: normalizePixel(15)
   }
 })
